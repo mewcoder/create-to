@@ -1,0 +1,22 @@
+{
+  "name": "create-mew",
+  "version": "0.0.5",
+  "description": "CLI",
+  "type": "module",
+  "bin": {
+    "create-mew": "bin.js"
+  },
+  "main": "index.js",
+  "scripts": {},
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "author": "mewcoder",
+  "license": "MIT",
+  "devDependencies": {
+    "minimist": "^1.2.6"
+  }
+}

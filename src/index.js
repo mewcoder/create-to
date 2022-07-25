@@ -1,6 +1,6 @@
 import minimist from "minimist";
 
-export function main(argv) {
+export function run(argv) {
   const args = minimist(argv.slice(2), {
     boolean: true,
   });

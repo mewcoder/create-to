@@ -5,7 +5,6 @@ import { execa, execaSync } from 'execa';
 import chalk from 'chalk';
 import inquirer from 'inquirer';
 import { promptList } from './constant.js';
-import { spawn } from 'child_process';
 const ctx = {
   name: '',
   type: 'empty',
@@ -58,14 +57,19 @@ const strats = {
     });
   },
   vuecli4() {
-    execaSync('vue', ['create', ctx.name], { stdio: 'inherit' });
+    execaSync('npx', ['@vue/cli@4','create', ctx.name], { stdio: 'inherit' });
   },
-  vuecli5() {},
+  vuecli5() {
+    execaSync('npx', ['@vue/cli@5', 'create', ctx.name], { stdio: 'inherit' });
+  },
   vue2() {
     // 子进程将使用父进程的标准输入输出。
     const ls = execaSync('npm', ['init', 'vue@2'], { stdio: 'inherit' });
   },
   vue3() {
     execaSync('npm', ['init', 'vue@3'], { stdio: 'inherit' });
+  },
+  vite() {
+    execaSync('npm', ['create', 'vite@latest'], { stdio: 'inherit' });
   }
 };

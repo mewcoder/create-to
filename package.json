@@ -1,7 +1,7 @@
 {
   "name": "create-to",
   "version": "0.0.1-alpha.1",
-  "description": "CLI tool for create project",
+  "description": "CLI tool to create project",
   "type": "module",
   "bin": {
     "create-to": "bin.js"

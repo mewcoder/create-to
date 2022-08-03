@@ -1,6 +1,6 @@
 {
   "name": "create-zero",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.1",
   "description": "CLI tool for create project",
   "type": "module",
   "bin": {

@@ -1,15 +1,15 @@
-# create-zero
+# create-to
 
 ## 使用
 
-> 平时开发的时候，脚手架初始化命令容易忘记，所以聚合了一下，写了这个CLI,方便创建项目时使用。
+> 脚手架过多，初始化命令容易忘记，所以聚合了一下，写了这个CLI，方便创建项目时使用。
 
 ```
-npm init zero
+npm init to
 
-# 或者 npm create zero
+# 或者 npm create to
 
-# 或者 npx create-zero
+# 或者 npx create-to
 ```
 
 ## 目前支持

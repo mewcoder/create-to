@@ -15,7 +15,7 @@ const ctx = {
 
 export async function main(argv) {
   clear();
-  await log('ZERO', 'cyan', true);
+  await log('create to', 'cyan', true);
   const args = minimist(argv.slice(2), {
     boolean: true
   });

@@ -1,10 +1,10 @@
 {
-  "name": "create-zero",
+  "name": "create-to",
   "version": "0.0.1-alpha.1",
   "description": "CLI tool for create project",
   "type": "module",
   "bin": {
-    "create-zero": "bin.js"
+    "create-to": "bin.js"
   },
   "main": "bin.js",
   "scripts": {
@@ -27,10 +27,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mewcoder/create-let.git"
+    "url": "git+https://github.com/mewcoder/create-to.git"
   },
   "bugs": {
-    "url": "https://github.com/mewcoder/create-let/issues"
+    "url": "https://github.com/mewcoder/create-to/issues"
   },
-  "homepage": "https://github.com/mewcoder/create-let#readme"
+  "homepage": "https://github.com/mewcoder/create-to#readme"
 }

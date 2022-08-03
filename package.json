@@ -1,10 +1,10 @@
 {
-  "name": "create-let",
-  "version": "0.0.5",
+  "name": "create-zero",
+  "version": "0.0.1",
   "description": "CLI tool for create project",
   "type": "module",
   "bin": {
-    "create-let": "bin.js"
+    "create-zero": "bin.js"
   },
   "main": "bin.js",
   "scripts": {

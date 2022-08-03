@@ -1,6 +1,6 @@
 import fs from 'fs';
 import minimist from 'minimist';
-import { log, clear } from './utils.js';
+import { log, clear, npx } from './utils.js';
 import { execa, execaSync } from 'execa';
 import chalk from 'chalk';
 import inquirer from 'inquirer';
@@ -15,12 +15,21 @@ const ctx = {
 
 export async function main(argv) {
   clear();
-  await log('let create', 'cyan', true);
+  await log('ZERO', 'cyan', true);
   const args = minimist(argv.slice(2), {
     boolean: true
   });
   ctx.willGit = !!args.git;
   ctx.willInstall = !!args.install;
+  await ask();
+  try {
+    await strats[ctx.type](ctx);
+  } catch (err) {
+    console.log(chalk.red(err));
+  }
+}
+
+async function ask() {
   try {
     const { name, type } = await inquirer.prompt(promptList);
     ctx.name = name;
@@ -28,25 +37,6 @@ export async function main(argv) {
   } catch (err) {
     console.log(chalk.red(err));
   }
-
-  try {
-    await strats[ctx.type](ctx);
-  } catch (err) {
-    console.log(chalk.red(err));
-  }
-
-  //  await execa('vue create test', [],);
-  // const res = await execa('ls', []);
-  // console.log(res.stdout);
-  // execa('npm init', [], {
-  //   cwd: './test'
-  // }).then((result) => {
-  //   console.log(result);
-  //   console.log(result.stdout);
-  // });
-  // if (willGit) {
-  //   execa('git',['init'],)
-  // }
 }
 
 const strats = {
@@ -56,20 +46,32 @@ const strats = {
       cwd: `./${ctx.name}`
     });
   },
+  vite() {
+    npx('create-vite@latest', ctx.name);
+  },
   vuecli4() {
-    execaSync('npx', ['@vue/cli@4','create', ctx.name], { stdio: 'inherit' });
+    npx('@vue/cli@4', 'create', ctx.name);
   },
   vuecli5() {
-    execaSync('npx', ['@vue/cli@5', 'create', ctx.name], { stdio: 'inherit' });
+    npx('@vue/cli@5', 'create', ctx.name);
   },
   vue2() {
-    // 子进程将使用父进程的标准输入输出。
-    const ls = execaSync('npm', ['init', 'vue@2'], { stdio: 'inherit' });
+    npx('create-vue@2', ctx.name);
   },
   vue3() {
-    execaSync('npm', ['init', 'vue@3'], { stdio: 'inherit' });
+    npx('create-vue@3', ctx.name);
   },
-  vite() {
-    execaSync('npm', ['create', 'vite@latest'], { stdio: 'inherit' });
+  cra() {
+    npx('create-react-app@latest', ctx.name);
+  },
+  umi3() {
+    execaSync('mkdir', [ctx.name]);
+    execaSync('cd', [ctx.name]);
+    npx('@umijs/create-umi-app');
+  },
+  umi4() {
+    execaSync('mkdir', [ctx.name]);
+    execaSync('cd', [ctx.name]);
+    npx('create-umi@latest');
   }
 };

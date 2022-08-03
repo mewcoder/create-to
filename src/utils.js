@@ -2,6 +2,7 @@ import { promisify } from 'util';
 import _figlet from 'figlet';
 import chalk from 'chalk'; // 控制台颜色
 import readline from 'readline';
+import { execa, execaSync } from 'execa';
 
 const figlet = promisify(_figlet);
 
@@ -22,4 +23,9 @@ const clear = () => {
   }
 };
 
-export { log,clear };
+const npx = (...args) => {
+  // 子进程将使用父进程的标准输入输出
+  execaSync('npx', args, { stdio: 'inherit' });
+};
+
+export { log, clear, npx };

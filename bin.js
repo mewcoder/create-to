@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import { run } from "./src/index.js";
+import { main } from './src/index.js';
 
-run(process.argv);
+main(process.argv);

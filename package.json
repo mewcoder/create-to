@@ -1,10 +1,10 @@
 {
-  "name": "create-mew",
+  "name": "create-let",
   "version": "0.0.5",
-  "description": "CLI",
+  "description": "CLI tool for create project",
   "type": "module",
   "bin": {
-    "create-mew": "bin.js"
+    "create-let": "bin.js"
   },
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,19 @@
   ],
   "author": "mewcoder",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "execa": "^6.1.0",
+    "figlet": "^1.5.2",
+    "inquirer": "^9.0.2",
     "minimist": "^1.2.6"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mewcoder/create-let.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mewcoder/create-let/issues"
+  },
+  "homepage": "https://github.com/mewcoder/create-let#readme"
 }

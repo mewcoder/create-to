@@ -6,7 +6,7 @@
   "bin": {
     "create-let": "bin.js"
   },
-  "main": "index.js",
+  "main": "bin.js",
   "scripts": {
     "test": "node bin.js"
   },

@@ -1,10 +1,11 @@
 import fs from 'fs';
 import minimist from 'minimist';
 import { log, clear } from './utils.js';
-import { execa } from 'execa';
+import { execa, execaSync } from 'execa';
 import chalk from 'chalk';
 import inquirer from 'inquirer';
 import { promptList } from './constant.js';
+import { spawn } from 'child_process';
 const ctx = {
   name: '',
   type: 'empty',
@@ -50,28 +51,21 @@ export async function main(argv) {
 }
 
 const strats = {
-  async empty(ctx) {
-    await execa(`mkdir ${ctx.name}`);
-    execa('npm init -y', [], {
+  empty(ctx) {
+    execaSync('mkdir', [ctx.name]);
+    execaSync('npm', ['init', '-y'], {
       cwd: `./${ctx.name}`
-    }).then((result) => {
-      console.log(result.stdout);
     });
   },
   vuecli4() {
-    const subprocess = execa(`vue create ${ctx.name}`);
-    subprocess.stdout.pipe(process.stdout);
-    subprocess.spawn('')
+    execaSync('vue', ['create', ctx.name], { stdio: 'inherit' });
   },
   vuecli5() {},
   vue2() {
-    const subprocess = execa(`npm init vue@2`);
-    subprocess.stdout.pipe(process.stdout);
-    subprocess.stdin.pipe(process.stdin);
+    // 子进程将使用父进程的标准输入输出。
+    const ls = execaSync('npm', ['init', 'vue@2'], { stdio: 'inherit' });
   },
   vue3() {
-    const subprocess = execa(`npm init vue@3`);
-    subprocess.stdout.pipe(process.stdout);
-    subprocess.stdin.pipe(process.stdin);
+    execaSync('npm', ['init', 'vue@3'], { stdio: 'inherit' });
   }
 };

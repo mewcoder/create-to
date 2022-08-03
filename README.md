@@ -1,8 +1,8 @@
 # 使用
 ```
-npm init mew
+npm init let
 
-# or npx create-mew
+# or npx create-let
 ```
 参数：
 - `--git` 初始化git

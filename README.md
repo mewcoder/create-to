@@ -7,9 +7,9 @@
 ```
 npm init to
 
-# 或者 npm create to
+#or npm create to
 
-# 或者 npx create-to
+#or npx create-to
 ```
 
 ## 目前支持
